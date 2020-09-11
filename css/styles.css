@@ -1,0 +1,14 @@
+html, body {
+    font-size: 13px;
+    font-family:'Roboto Mono',monospace;
+}
+
+.site {
+    width: 520px;
+    max-width: 88%;
+    /* word-wrap: break-word; */
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.4;
+    margin-top: 5vh;
+}
