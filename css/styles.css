@@ -1,0 +1,28 @@
+html, body {
+    font-size: 12px;
+    font-family:'Roboto Mono',monospace;
+}
+
+.site {
+    width: 680px;
+    max-width: 88%;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.4;
+    margin-top: 5vh;
+}
+
+#colorstrip{
+    margin-top: 24px;
+    width: 100%; height: 5px;
+    background-image: linear-gradient(to right, #6e906f , #96c098, #ccdf98);
+}
+
+img {
+    max-width: 100%;
+}
+
+.footer {
+    margin-top: 24px;
+    float: right;
+}

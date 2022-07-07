@@ -1,0 +1,58 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+    <title>ivy 🌿</title>
+    <meta charset="utf-8">
+
+    <link href="css/styles.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+<body class="site">
+    
+    <p>*! ivy 🌿 site otw :)</p> 
+    <p>ivy is still a work-in-progress. here's a screenshot of the current REPL
+    which prints the abstract syntax tree:</p>
+
+    <img src="/img/carbon.png">
+
+    <p>here's a preview of what the code will look like:</p>
+
+    <div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #008000">// One way to express a factorial function.</span>
+<span style="color: #0000ff">let</span> fact = <span style="color: #0000ff">fn</span> (0) -&gt; 1;
+<span style="color: #0000ff">let</span> fact = <span style="color: #0000ff">fn</span> (x) -&gt; x * fact(x) - 1;
+
+<span style="color: #008000">// Another way!</span>
+<span style="color: #0000ff">let</span> fact_two = <span style="color: #0000ff">fn</span> (x) -&gt; <span style="color: #0000ff">match</span> (x) (
+    | 0 -&gt; 1
+    | x -&gt; x * fact_two(x - 1)
+
+);
+
+<span style="color: #008000">// Call the function</span>
+fact_two(12);
+</pre></td></tr></table></div>
+
+
+    <p>the source code is available on <a href="https://github.com/gtr/ivy">github</a>.</p>
+
+
+    <div id="colorstrip"/>
+
+</body>
+
+</html>
