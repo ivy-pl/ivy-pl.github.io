@@ -12,31 +12,22 @@
 
 <body class="site">
     
-    <p>*! ivy 🌿 site otw :)</p> 
-    <p>ivy is still a work-in-progress. here's a screenshot of the current REPL
-    which prints the abstract syntax tree:</p>
+    <img style="width: 30%;" src="/img/ivy-logo.png">
+
+    <p>
+        Ivy 🌿 is a high-level programming language focused on functional programming and extensibility. It is inspired by Python, Haskell, and Clojure. Ivy is still a work in progress, I'm currently re-implementing it in Rust. Currently, the REPL only prints the abstract syntax tree:
+    </p>
 
     <img src="/img/carbon.png">
 
-    <p>here's a preview of what the code will look like:</p>
+    <p>Here's a preview of what the code will look like:</p>
 
-    <div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #008000">// One way to express a factorial function.</span>
+    <div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">
+</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #008000">// One way to express a factorial function.</span>
 <span style="color: #0000ff">let</span> fact = <span style="color: #0000ff">fn</span> (0) -&gt; 1;
-<span style="color: #0000ff">let</span> fact = <span style="color: #0000ff">fn</span> (x) -&gt; x * fact(x) - 1;
+<span style="color: #0000ff">let</span> fact = <span style="color: #0000ff">fn</span> (x) -&gt; x * fact(x - 1);
 
-<span style="color: #008000">// Another way!</span>
+<span style="color: #008000">// Another way using the match statment.</span>
 <span style="color: #0000ff">let</span> fact_two = <span style="color: #0000ff">fn</span> (x) -&gt; <span style="color: #0000ff">match</span> (x) (
     | 0 -&gt; 1
     | x -&gt; x * fact_two(x - 1)
@@ -48,10 +39,10 @@ fact_two(12);
 </pre></td></tr></table></div>
 
 
-    <p>the source code is available on <a href="https://github.com/gtr/ivy">github</a>.</p>
+    <p>The source code is available on <a href="https://github.com/gtr/ivy">github</a>.</p>
 
 
-    <div id="colorstrip"/>
+    <div class="footer" id="colorstrip"/>
 
 </body>
 
