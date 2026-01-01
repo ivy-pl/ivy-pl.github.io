@@ -1,49 +1,133 @@
-<!doctype html>
-
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <title>ivy 🌿</title>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ivy — The Friendly Functional Programming Language</title>
 
-    <link href="css/styles.css" rel="stylesheet">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
 </head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo-section">
+                <div class="logo">
+                    <img src="img/ivy-logo.png" alt="Ivy logo">
+                </div>
+                <div>
+                    <span class="wordmark">Ivy</span>
+                </div>
+            </div>
+        </header>
 
-<body class="site">
-    
-    <img style="width: 30%;" src="/img/ivy-logo.png">
+        <div class="divider thick"></div>
 
-    <p>
-        Ivy 🌿 is a high-level programming language focused on functional programming and extensibility. It is inspired by Python, Haskell, and Clojure. Ivy is still a work in progress, I'm currently re-implementing it in Rust. Currently, the REPL only prints the abstract syntax tree:
-    </p>
+        <section class="about">
+                <p>Source code: <a href="https://github.com/gtr/ivy">github.com/gtr/ivy</a></p>
+            <p>
+                Ivy is a statically typed functional programming language: friendly enough
+                for beginners, robust enough for experienced programmers. Built to be
+                inspected, reasoned about, and trusted.
+            </p>
+            <p>
+                    Ivy is still a work-in-progress.
+                    There are many features that are yet to be implemented, but it's decently useful at the moment. <a href="https://github.com/gtr/ivy">Stay tuned</a> for more!
+                </p>
+        </section>
 
-    <img src="/img/carbon.png">
-
-    <p>Here's a preview of what the code will look like:</p>
-
-    <div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">
-</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #008000">// One way to express a factorial function.</span>
-<span style="color: #0000ff">let</span> fact = <span style="color: #0000ff">fn</span> (0) -&gt; 1;
-<span style="color: #0000ff">let</span> fact = <span style="color: #0000ff">fn</span> (x) -&gt; x * fact(x - 1);
-
-<span style="color: #008000">// Another way using the match statment.</span>
-<span style="color: #0000ff">let</span> fact_two = <span style="color: #0000ff">fn</span> (x) -&gt; <span style="color: #0000ff">match</span> (x) (
-    | 0 -&gt; 1
-    | x -&gt; x * fact_two(x - 1)
-
-);
-
-<span style="color: #008000">// Call the function</span>
-fact_two(12);
-</pre></td></tr></table></div>
-
-
-    <p>The source code is available on <a href="https://github.com/gtr/ivy">github</a>.</p>
+        <section>
+            <h2>Features</h2>
+            <div class="features">
+                <span class="feature">Hindley-Milner type inference</span>
+                <span class="feature">Algebraic data types</span>
+                <span class="feature">Pattern matching</span>
+                <span class="feature">First-class functions</span>
+                <span class="feature">Interactive REPL</span>
+                <span class="feature">Clean, minimal syntax</span>
+            </div>
+        </section>
 
 
-    <div class="footer" id="colorstrip"/>
+        <section>
+            <h2>Ivy in action</h2>
+<pre><span class="comment">-- Lists support pattern matching in function heads.</span>
+
+<span class="keyword">fn</span> <span class="function">length</span>([]) => <span class="number">0</span>;
+<span class="keyword">fn</span> <span class="function">length</span>([_ :: tail]) => <span class="number">1</span> + length(tail);
+
+<span class="keyword">fn</span> <span class="function">map</span>(f, []) => [];
+<span class="keyword">fn</span> <span class="function">map</span>(f, [head :: tail]) => f(head) :: map(f, tail);
+
+<span class="keyword">let</span> numbers = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];
+<span class="keyword">let</span> doubled = map(<span class="keyword">fn</span> (x) => x * <span class="number">2</span>, numbers);
+
+println(<span class="string">"Doubled: "</span> ++ show(doubled));</pre>
+        </section>
+
+        <section>
+            <h2>Algebraic Types</h2>
+<pre><span class="comment">-- Define a binary tree with a type parameter.</span>
+
+<span class="keyword">type</span> <span class="type">Tree</span>&lt;a&gt; =
+| Empty
+| Node(a, <span class="type">Tree</span>&lt;a&gt;, <span class="type">Tree</span>&lt;a&gt;)
+;
+
+<span class="keyword">fn</span> <span class="function">count</span>(<span class="type">Empty</span>) => <span class="number">0</span>;
+<span class="keyword">fn</span> <span class="function">count</span>(<span class="type">Node</span>(_, left, right)) =>
+    <span class="number">1</span> + count(left) + count(right);
+
+<span class="keyword">let</span> tree = Node(<span class="number">1</span>, Node(<span class="number">2</span>, Empty, Empty), Empty);
+println(<span class="string">"Nodes: "</span> ++ show(count(tree)));</pre>
+        </section>
+
+        <section>
+            <h2>Interactive REPL</h2>
+            <div class="repl">
+<pre class="repl-ascii">  _
+ (_)_   ___   _
+ | \ \ / / | | |
+ | |\ V /| |_| |
+ |_| \_/  \__, |
+          |___/  v0.2
+
+Ivy - the friendly functional programming language
+Type :help for commands, :q to quit
+</pre>
+                <div><span class="repl-prompt">ivy&gt;</span> :help</div>
+<pre class="repl-output">Ivy REPL Commands:
+
+  :help, :h          Show this help message
+  :quit, :q          Exit the REPL
+  :reset, :r         Reset interpreter state (clear all definitions)
+  :load &lt;path&gt;, :l   Load and execute a file
+  :type &lt;expr&gt;, :t   Show the inferred type of an expression
+  :env               Show all defined names in current scope
+
+Multi-line input is supported. The REPL will continue prompting
+with '...&gt;' when it detects unclosed brackets or expressions.</pre>
+                <div style="margin-top: 8px;"><span class="repl-prompt">ivy&gt;</span> :type length</div>
+                <div class="repl-output">length : List&lt;a&gt; -&gt; Int</div>
+                <div style="margin-top: 8px;"><span class="repl-prompt">ivy&gt;</span> length([1, 2, 3, 4, 5])</div>
+                <div class="repl-result">5</div>
+                <div style="margin-top: 8px;"><span class="repl-prompt">ivy&gt;</span> map(fn (x) =&gt; x * x, [1, 2, 3])</div>
+                <div class="repl-result">[1, 4, 9]</div>
+            </div>
+        </section>
+
+
+        <div class="divider thick"></div>
+
+        <footer>
+            <span>2026 — Gerardo Torres Castro</span>
+            <div class="footer-links">
+                <a href="https://github.com/gtr/ivy">GitHub</a>
+            </div>
+        </footer>
+    </div>
 
 </body>
-
 </html>
