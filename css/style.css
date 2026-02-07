@@ -1,210 +1,63 @@
-:root {
-    --sage: #7a9e7e;
-    --sage-dark: #5c7a5f;
-    --ink: #2c2c2c;
-    --ink-light: #5a5a5a;
-    --rule: #d4d0c8;
-    --code-bg: #fafaf8;
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 body {
-    font-family: 'IBM Plex Sans', sans-serif;
-    background-color: var(--cream);
-    color: var(--ink);
-    line-height: 1.7;
-    font-size: 17px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    color: #2c2c2c;
+    line-height: 1.6;
 }
 
-.container {
-    max-width: 720px;
+main {
+    max-width: 960px;
     margin: 0 auto;
-    padding: 80px 24px 120px;
+    padding: 60px 24px;
 }
 
-header {
-    margin-bottom: 24px;
-}
-
-.logo-section {
+h1 {
     display: flex;
     align-items: center;
-    gap: 20px;
-    margin-bottom: 32px;
-}
-
-.logo {
-    width: 72px;
-    height: 72px;
-}
-
-.logo img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-}
-
-.wordmark {
+    gap: 16px;
     font-family: 'IBM Plex Serif', serif;
     font-size: 48px;
     font-weight: 500;
     letter-spacing: -0.02em;
-    color: var(--ink);
+    margin-bottom: 24px;
 }
 
-.version {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 12px;
-    color: var(--ink-light);
-    margin-left: 12px;
-    vertical-align: super;
+.logo {
+    width: 48px;
+    height: 48px;
 }
 
-.tagline {
-    font-family: 'IBM Plex Serif', serif;
-    font-size: 12pt;
-    color: var(--ink-light);
-    font-weight: 400;
-    font-style: italic;
-}
-
-.divider {
-    height: 1px;
-    background: var(--rule);
-    margin: 24px 0;
-}
-
-.divider.thick {
-    height: 3px;
-    background: var(--sage);
-}
-
-section {
-    margin-bottom: 48px;
+.hero {
+    display: flex;
+    gap: 48px;
+    align-items: flex-start;
 }
 
 .about {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 14px;
+    flex: 1;
+    min-width: 0;
 }
 
-h2 {
-    font-family: 'IBM Plex Sans', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--ink-light);
-    margin-bottom: 16px;
-}
-
-p {
-    margin-bottom: 16px;
-    color: var(--ink);
-}
-
-p:last-child {
-    margin-bottom: 0;
+.about p {
+    margin-bottom: 10px;
 }
 
 pre {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 14px;
-    line-height: 1.6;
-    background: var(--code-bg);
-    border: 1px solid var(--rule);
-    padding: 24px;
+    flex: 1;
+    min-width: 0;
+    font-size: 12px;
+    line-height: 1.5;
+    margin: 0;
     overflow-x: auto;
-    margin: 24px 0;
 }
 
-code {
-    font-family: 'IBM Plex Mono', monospace;
+a { color: #4078c0; }
+
+.divider {
+    height: 3px;
+    background: #7a9e7e;
+    margin-top: 48px;
 }
 
-.comment { color: var(--sage-dark); }
-.keyword { color: #6b5b95; }
-.function { color: var(--ink); }
-.type { color: #2a6496; }
-.string { color: #8b6b4f; }
-.number { color: #8b4f6b; }
-
-.features {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px 32px;
-    margin-top: 20px;
+@media (max-width: 700px) {
+    .hero { flex-direction: column; gap: 24px; }
 }
-
-.feature {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 14px;
-    color: var(--ink);
-    display: flex;
-    align-items: baseline;
-    gap: 8px;
-}
-
-.feature::before {
-    content: "—";
-    color: var(--sage);
-}
-
-/* Links */
-a {
-    color: var(--sage-dark);
-    text-decoration: none;
-    border-bottom: 1px solid var(--sage);
-    transition: border-color 0.2s;
-}
-
-a:hover {
-    border-color: var(--sage-dark);
-}
-
-/* REPL preview */
-.repl {
-    background: #1a1a1a;
-    color: #e0e0e0;
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 13px;
-    padding: 20px 24px;
-    border-radius: 4px;
-    margin: 24px 0;
-}
-
-.repl-prompt { color: var(--sage); }
-.repl-output { color: #a0a0a0; }
-.repl-result { color: #e0e0e0; }
-
-.repl pre {
-    background: transparent;
-    border: none;
-    padding: 0;
-    margin: 0 0 8px 0;
-    font-size: 13px;
-    line-height: 1.4;
-}
-
-.repl-ascii {
-    color: var(--sage);
-}
-
-footer {
-    font-size: 14px;
-    color: var(--ink-light);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.footer-links {
-    display: flex;
-    gap: 24px;
-}
-
