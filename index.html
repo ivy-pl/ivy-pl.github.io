@@ -3,51 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ivy</title>
+    <title>ivy — a statically typed functional programming language</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Serif:wght@500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <main>
-        <h1>
-            <img src="img/ivy-logo.png" alt="Ivy logo" class="logo">
-            Ivy
-        </h1>
+    <div class="ruler-edge" aria-hidden="true"></div>
 
-        <div class="hero">
-            <div class="about">
-                <p>
-                    Ivy is a statically typed functional programming language.
-                    Friendly enough for beginners, robust enough for experienced programmers.
-                </p>
-                <p>Ivy is still a work-in-progress. Stay tuned for more!</p>
-                <p>Source code: <a href="https://github.com/gtr/ivy">https://github.com/gtr/ivy</a>.</p>
+    <div class="canvas">
+        <img src="img/lsystem.svg" class="watermark" alt="" aria-hidden="true">
+
+        <header class="statusbar">
+            <div class="wrap">
+                <span><span class="dot"></span>the ivy programming language</span>
+                <span>v0.2 · work in progress</span>
             </div>
+        </header>
 
-<pre>
-type Tree&lt;a&gt; =
-    | Empty
-    | Node(a, Tree&lt;a&gt;, Tree&lt;a&gt;);
+        <div class="wrap">
+            <section class="hero">
+                <h1>
+                    <img src="img/ivy-logo.png" alt="" class="logo">
+                    <span>ivy</span>
+                </h1>
+                <p class="tagline">
+                    Ivy is a statically typed functional programming language —
+                    <b>friendly enough for beginners, robust enough for experienced programmers.</b>
+                    built to be inspected, reasoned about, and trusted.
+                </p>
+            </section>
 
-fn map :: (a -&gt; b) -&gt; Tree&lt;a&gt; -&gt; Tree&lt;b&gt;;
-fn map(f, Empty)         =&gt; Empty;
-fn map(f, Node(x, l, r)) =&gt; Node(f(x), map(f, l), map(f, r));
+            <section class="listing-section">
+                <div class="two">
+                    <figure class="listing">
+                        <figcaption class="bar">
+                            <span>tree.ivy</span>
+                        </figcaption>
+<pre><span class="ln">01</span>  <span class="cm">-- algebraic data types</span>
+<span class="ln">02</span>  <span class="k">type</span> <span class="ty">Tree</span>&lt;a&gt; =
+<span class="ln">03</span>      | <span class="ty">Empty</span>
+<span class="ln">04</span>      | <span class="ty">Node</span>(a, <span class="ty">Tree</span>&lt;a&gt;, <span class="ty">Tree</span>&lt;a&gt;);
+<span class="ln">05</span>
+<span class="ln">06</span>  <span class="cm">-- type inferred; no annotation required</span>
+<span class="ln">07</span>  <span class="k">fn</span> <span class="fn">map</span>(f, <span class="ty">Empty</span>)         =&gt; <span class="ty">Empty</span>;
+<span class="ln">08</span>  <span class="k">fn</span> <span class="fn">map</span>(f, <span class="ty">Node</span>(x, l, r)) =&gt; <span class="ty">Node</span>(f(x), <span class="fn">map</span>(f, l), <span class="fn">map</span>(f, r));
+<span class="ln">09</span>
+<span class="ln">10</span>  <span class="k">let</span> tree = <span class="ty">Node</span>(<span class="nm">1</span>, <span class="ty">Node</span>(<span class="nm">2</span>, <span class="ty">Empty</span>, <span class="ty">Empty</span>), <span class="ty">Node</span>(<span class="nm">3</span>, <span class="ty">Empty</span>, <span class="ty">Empty</span>));
+<span class="ln">11</span>  <span class="k">let</span> squared = <span class="fn">map</span>(<span class="k">fn</span> (x) =&gt; x * x, tree);</pre>
+                    </figure>
 
-fn sum :: Tree&lt;Int&gt; -&gt; Int;
-fn sum(Empty)         =&gt; 0;
-fn sum(Node(x, l, r)) =&gt; x + sum(l) + sum(r);
-
-let tree = Node(1, Node(2, Empty, Empty), Node(3, Empty, Empty));
-let sum_of_squares = sum(map(fn (x) =&gt; x * x, tree));
-
--- Prints "Sum of squares: 14"
-println("Sum of squares: " ++ show(sum_of_squares));
-</pre>
+                    <aside class="prose">
+                        <p>Ivy draws from the golden age of computing: UNIX, Plan 9, Haskell, IBM.</p>
+                        <p>Simple things should be simple. Complex things should be possible. Ivy currently supports basic functional programming constructs: functions as first-class citizens, algebraic data types, Hindley-Milner type inference, and friendly error messages.</p>
+                        <p>Planned in the future: type classes, refinement types, a more robust REPL, and a faster backend. Stay tuned!</p>
+                        <p>Source code: <a href="https://github.com/gtr/ivy">github.com/gtr/ivy</a>.</p>
+                    </aside>
+                </div>
+            </section>
         </div>
 
-        <div class="divider"></div>
-    </main>
+        <footer>
+            <div class="wrap foot-row">
+                <span class="reg">the ivy programming language</span>
+                <span>Gerardo Torres Castro © 2026</span>
+            </div>
+        </footer>
+    </div>
 </body>
 </html>
